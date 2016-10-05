@@ -1,0 +1,6 @@
+I = imread('12.jpg');
+
+%BW = roipoly
+BW = roipoly(I)
+
+save('BW1.ma')

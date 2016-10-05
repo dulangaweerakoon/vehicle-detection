@@ -1,0 +1,6 @@
+clear all
+clc
+I = imread('15.jpg');
+background = imopen(I,strel('disk',15));
+Ip = imsubtract(I,background);
+imshow(Ip,[])

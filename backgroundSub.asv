@@ -1,0 +1,15 @@
+close all;
+I = imread('1.jpg');
+background = imread('background.jpg');
+
+%background = imopen(background,strel('disk',3));
+Ip = imsubtract(I,background);
+Ip = rgb2gray(Ip);
+Ip = imclose(Ip,strel('disk',3));
+
+Ip(Ip<5) =0;
+Ip(Ip>=5) =1;
+
+imshow(Ip.*rgb2gray(I))
+
+%imshow()
