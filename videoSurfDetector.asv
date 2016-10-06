@@ -1,0 +1,19 @@
+reader = vision.VideoFileReader('C:\Users\dulangakw\Dropbox\SMU\BeachStation09042016.avi');
+videoPlayer = vision.DeployableVideoPlayer();
+figure
+
+while ~isDone(reader)
+    frame = reader.step();
+    frame = rgb2gray(frame);
+    obj  = detectSURFFeatures(frame);
+    [features, pts] = extractFeatures(frame, obj);
+    imshow(frame);
+    hold on
+    %plot(pts.selectStrongest(100))
+    a = pts.selectStrongest(10);
+    position = [a.Location,5*ones(10,1)];
+    label = ones(1)
+    
+    insertObjectAnnotation(I, 'circle', position, label, ...
+      'LineWidth', 3, 'Color', {'cyan', 'yellow'}, 'TextColor', 'black');
+end
