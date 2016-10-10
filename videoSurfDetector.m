@@ -1,12 +1,20 @@
 reader = vision.VideoFileReader('C:\Users\dulangakw\Dropbox\SMU\BeachStation09042016.avi');
 videoPlayer = vision.DeployableVideoPlayer();
 %figure
+oldframe = rgb2gray(reader.step());
+frame = oldframe;
 
 while ~isDone(reader)
+    oldframe = frame;
     frame = reader.step();
     frame = rgb2gray(frame);
+    
     obj  = detectSURFFeatures(frame);
+    
+    
     [features, pts] = extractFeatures(frame, obj);
+   
+   
     %imshow(frame);
     %hold on
     %plot(pts.selectStrongest(100))

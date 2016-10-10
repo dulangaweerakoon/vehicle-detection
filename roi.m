@@ -1,7 +1,7 @@
-I = imread('wood11.jpg');
+I = imread('ppl2.jpg');
 
 %BW = roipoly
-BW = roipoly(I)
+ROI = roipoly(I)
 
-%save('BW4.mat','BW');
-csvwrite('BW2.csv',BW)
+save('ROI.mat','ROI');
+%csvwrite('BW2.csv',BW)
